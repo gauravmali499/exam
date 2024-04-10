@@ -1,0 +1,62 @@
+<form class="container mt-3" [formGroup]="votingForm" (ngSubmit)="registerData()">
+    <h2 class="text-center">Voting Registration Form</h2>
+    <div class="mb-3">
+        <label class="form-label" for="firstName">First Name: </label>
+        <input class="form-control" type="text" name="firstName" id="firstName" formControlName="firstName">
+        <span *ngIf="votingForm.get('firstName')?.invalid && votingForm.get('firstName')?.touched">*Enter Valid firstName</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="lastName">Last Name: </label>
+        <input class="form-control" type="text" name="lastName" id="lastName" formControlName="lastName">
+        <span *ngIf="votingForm.get('lastName')?.invalid && votingForm.get('lastName')?.touched">*Enter Valid lastName</span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="dateOfBirth">Date of Birth: </label>
+        <input type="date" name="dateOfBirth" id="dateOfBirth" formControlName="dateOfBirth">
+    </div>
+    <div class="mb-3">
+        <label class="form-label pr-3" for="gender">Gender: </label>
+        <input class="form-check-input" type="radio" name="gender" id="male" formControlName="gender">
+        <label class="form-check-label" for="male">Male</label>
+        <input class="form-check-input" type="radio" name="gender" id="female" formControlName="gender">
+        <label class="form-check-label" for="female">Female</label>
+    </div>
+    <div class="mb-3">
+        <label class="form-check-label" for="hobbies">Choose Hobbies: </label>
+        <input class="form-check-input" type="checkbox" name="chess" id="chess" formControlName="hobbies">
+        <label class="form-check-label" for="chess">chess</label>
+        <input class="form-check-input" type="checkbox" name="badminton" id="badminton" formControlName="hobbies">
+        <label class="form-check-label" for="badminton">badminton</label>
+        <input class="form-check-input" type="checkbox" name="hockey" id="hockey" formControlName="hobbies">
+        <label class="form-check-label" for="hockey">hockey</label>
+        <input class="form-check-input" type="checkbox" name="reading" id="reading" formControlName="hobbies"> 
+        <label class="form-check-label" for="reading">reading</label>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="stateDropdown">State: </label>
+        <select class="form-select" name="stateDropdown" id="stateDropdown" formControlName="state" [(ngModel)]="selectedState"
+        (ngModelChange)="onChangeofState($event)">
+            <option selected value="">Select State</option>
+            <option *ngFor="let state of states">{{state}}</option>
+        </select>
+    </div>
+    <div class="mb-3" >
+        <label class="form-label" for="cityDropdown">City: </label>
+        <select class="form-select" name="cityDropdown" id="cityDropdown" formControlName="city">
+            <option selected value="">Select City</option>
+            <option></option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="areaDropdown">Area: </label>
+        <select class="form-select" name="areaDropdown" id="areaDropdown" formControlName="area">
+            <option selected value="">Select Area</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="salary">Salary: </label>
+        <input class="form-control" type="number" name="salary" id="salary" formControlName="salary">
+    </div>
+    <button class="btn btn-primary" type="submit" id="submit" [disabled]="votingForm.invalid">Register</button>
+</form>
+{{cities}}
